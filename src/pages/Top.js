@@ -7,16 +7,16 @@ import VideoGridItem from '../components/video-grid-item/VideoGridItem';
 
 const Top = () => {
   const { globalState, setGlobalState } = useContext(Store);
-  useEffect(() => {
-    fetchPopularData().then((response) => {
-      console.log('data', response);
+  const setPopularVideo = async () =>
+    await fetchPopularData().then((response) =>
       setGlobalState({
         type: 'SET_POPULAR',
         payload: { popular: response.data.items },
-      });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      })
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => setPopularVideo(), []);
+
   return (
     <Layout>
       <VideoGrid>

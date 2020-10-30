@@ -17,10 +17,9 @@ const VideoDetail = () => {
       setGlobalState({ type: 'SET_SELECTED', payload: { selected: item } });
     });
   };
-  useEffect(() => {
-    setSelectedVideo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => setSelectedVideo(), [location.search]);
+
   return globalState.selected && globalState.selected.id ? (
     <div className={Style.wrap}>
       <VideoPlay id={globalState.selected.id} />
