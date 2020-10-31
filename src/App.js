@@ -5,7 +5,7 @@ import Search from './pages/Search';
 import Watch from './pages/Watch';
 
 const App = () => (
-  <Router basename={process.env.PUBLIC_URL}>
+  <Router>
     <Switch>
       <Route exact path="/" component={Top}></Route>
       <Route exact path="/search" component={Search}></Route>
