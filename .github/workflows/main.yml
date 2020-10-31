@@ -21,16 +21,26 @@ jobs:
 
       # https://github.com/marketplace/actions/github-pages-action
       # https://blog.ojisan.io/gha-ghpage
+      # https://blog.so-ta.net/portfolio/react-github-pages-actions
+
       - name: setup node
         uses: actions/setup-node@v2.1.0
         with:
           node-version: '12.x'
 
-      - name: install
-        run: yarn install --frozen-lockfile
+      - name: cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: ci
+        run: npm ci
 
       - name: build
-        run: yarn build
+        run: npm run build
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
 
@@ -38,4 +48,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./build

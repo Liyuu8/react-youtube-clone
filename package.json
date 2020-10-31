@@ -29,7 +29,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://liyuu8.github.io/react-youtube-clone",
+  "homepage": "https://liyuu8.github.io/react-youtube-clone/",
   "eslintConfig": {
     "extends": [
       "react-app",
