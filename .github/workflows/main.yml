@@ -28,19 +28,11 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: ci
-        run: npm ci
+      - name: install
+        run: yarn install --frozen-lockfile
 
       - name: build
-        run: npm run build
+        run: yarn build
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
 
