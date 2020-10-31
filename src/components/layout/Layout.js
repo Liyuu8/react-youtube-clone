@@ -2,13 +2,10 @@ import React from 'react';
 import Header from '../header/Header';
 import Style from './Layout.module.sass';
 
-const Layout = ({ children }) => {
-  return (
-    <div className={Style.wrapper}>
-      <Header />
-      <div className={Style.main}>{children}</div>
-    </div>
-  );
-};
-
+const Layout = ({ children }) => (
+  <div className={Style.wrapper}>
+    <Header />
+    <div className={Style.main}>{children}</div>
+  </div>
+);
 export default Layout;
