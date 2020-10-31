@@ -39,3 +39,12 @@ export const fetchReletedData = async (id) => {
     },
   });
 };
+
+export const fetchSearchData = async (query) => {
+  return await youtube.get('/search', {
+    params: {
+      ...commonParams,
+      q: query,
+    },
+  });
+};
